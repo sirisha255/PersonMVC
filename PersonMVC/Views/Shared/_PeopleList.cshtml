@@ -1,0 +1,13 @@
+﻿@model List<People>
+
+<div class="row">
+    <div class="col-3">Name</div>
+    <div class="col-3">CityName</div>
+    <div class="col-3">PhoneNUmber</div>
+
+</div>
+@foreach (People people in Model)
+{
+
+    <partial name="_PeopleRow" model="people"></partial>
+}
