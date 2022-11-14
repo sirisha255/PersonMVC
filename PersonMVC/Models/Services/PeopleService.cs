@@ -10,38 +10,38 @@ namespace PersonMVC.Models.Services
         {
             _peopleRepo = peopleRepo;
         }
-        public People Create(CreatePeopleViewModel createPeople)
+        public Person Create(CreatePersonViewModel createPerson)
         {
-            if (string.IsNullOrEmpty(createPeople.Name) || string.IsNullOrWhiteSpace(createPeople.CityName))//|| int.Parse(createPeople.PhoneNumber))
+            if (string.IsNullOrEmpty(createPerson.Name) || string.IsNullOrWhiteSpace(createPerson.City) || string.IsNullOrWhiteSpace(createPerson.PhoneNumber))
             {
-                throw new ArgumentException("Name,PhoneNumber,CityName not allowed whitespace");
+                throw new ArgumentException("Name,PhoneNumber,City not allowed whitespace");
             }
                     
-             People people = new People()
+             Person person = new Person()
             {
-                Name = createPeople.Name,
-                PhoneNumber = createPeople.PhoneNumber,
-                CityName = createPeople.CityName
+                Name = createPerson.Name,
+                PhoneNumber = createPerson.PhoneNumber,
+                City = createPerson.City
 
             };
-            people = _peopleRepo.Create(people);
-            return people;
+            person = _peopleRepo.Create(person);
+            return person;
 
         }
 
        
 
-        public People FindById(int id)
+        public Person FindById(int id)
         {
             return _peopleRepo.GetById(id);
         }
 
-        public List<People> GetAll()
+        public List<Person> GetAll()
         {
             return _peopleRepo.GetAll();
         }
         //public List<People> FindByCityName(string cityname) => _peopleRepo.GetByCityName(cityname);
-        public void Edit(int id, CreatePeopleViewModel editPeople)
+        public void Edit(int id, CreatePersonViewModel editPerson)
         {
             throw new NotImplementedException();
         }
@@ -49,15 +49,15 @@ namespace PersonMVC.Models.Services
         {
             throw new NotImplementedException();
         }
-        public People? LastAdded()
+        public Person? LastAdded()
         {
-            List<People> people = _peopleRepo.GetAll();
-            if(people.Count <1)
+            List<Person> person = _peopleRepo.GetAll();
+            if(person.Count <1)
             {
                 return null;
             }
        
-         return people.Last();
+         return person.Last();
         }
 
        

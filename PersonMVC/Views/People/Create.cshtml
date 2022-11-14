@@ -1,11 +1,11 @@
-﻿@model PeopleMVC.Models.ViewModels.CreatePeopleViewModel
+﻿@model PeopleMVC.Models.ViewModels.CreatePersonViewModel
 
 @{
     ViewData["Title"] = "Create";
-
 }
+
 <h1>Create</h1>
-<h4>CreatePeopleViewModel</h4>
+<h4>CreatePersonViewModel</h4>
 <hr />
 <div class="row" >
     <div class="col-md-4">
@@ -18,13 +18,13 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CityName" class="control-label"></label>
-                <input asp-for="CityName" list="peopleList" class="form-control" />
-                <span asp-validation-for="CityName" class="text-danger"></span>
-                <datalist id="peopleList">
-                    @foreach (string people in Model.PeopleList)
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" list="PeopleList" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+                <datalist id="PeopleList">
+                    @foreach (string City in Model.PeopleList)
                     {
-                        <option value="@cityname">@CityName</option>
+                        <option value="@City">@City</option>
                     }
                 </datalist>
             </div>

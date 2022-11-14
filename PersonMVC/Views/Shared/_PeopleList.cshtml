@@ -1,13 +1,13 @@
-﻿@model List<People>
+﻿@model List<Person>
 
 <div class="row">
     <div class="col-3">Name</div>
-    <div class="col-3">CityName</div>
+    <div class="col-3">City</div>
     <div class="col-3">PhoneNUmber</div>
 
 </div>
-@foreach (People people in Model)
+@foreach (Person person in Model)
 {
 
-    <partial name="_PeopleRow" model="people"></partial>
+    <partial name="_PeopleRow" model="person"></partial>
 }

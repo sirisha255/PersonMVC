@@ -4,12 +4,12 @@ namespace PersonMVC.Models.Services
 {
     public interface IPeopleService
     {
-        People Create(CreatePeopleViewModel createPeople);
-        List<People> GetAll();
-        People FindById(int id);
-        void Edit(int id, CreatePeopleViewModel editPeople);
+        Person Create(CreatePersonViewModel createPerson);
+        List<Person> GetAll();
+        Person FindById(int id);
+        void Edit(int id, CreatePersonViewModel editPerson);
         void Remove(int id);
-         People LastAdded();
+         Person LastAdded();
     
     
     }

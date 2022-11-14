@@ -6,20 +6,20 @@ namespace PersonMVC.Models.Repos
     {
         //crud
         //c
-        People Create(People people);
+        Person Create(Person person);
 
         //Read
-        List<People> GetAll();
-        List<People> GetByCityName(string CityName);
+        List<Person> GetAll();
+        List<Person> GetByCity(string City);
          
-        People GetById(int id);
+        Person GetById(int id);
 
 
         //U
-        void Update(People people);
+        void Update(Person person);
 
         //Delete
-        void Delete(People people);
+        void Delete(Person person);
         //People LastAdded();
     }
 }

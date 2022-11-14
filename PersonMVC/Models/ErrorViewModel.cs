@@ -1,3 +1,6 @@
+using System;
+
+
 namespace PersonMVC.Models
 {
     public class ErrorViewModel

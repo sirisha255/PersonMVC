@@ -2,19 +2,20 @@
 
 namespace PersonMVC.Models.ViewModels
 {
-    public class CreatePeopleViewModel
+    public class CreatePersonViewModel
     {
-        [Display(Name ="People")]
+        [Display(Name ="Person")]
         [Required]
         public string? Name { get; set; }
         [Required]
     
-        public string? CityName { get; set; }
+        public string? City { get; set; }
         [StringLength(80,MinimumLength =1)]
         [Required]
-        public int PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
+        [Required]
 
-        public List<string> CityNameList
+        public List<string> CityList
         {
             get
             {

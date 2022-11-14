@@ -3,63 +3,63 @@
     public class InMemoryRepo : IPeopleRepo
     {
         static int idCounter = 0;
-        static List<People> peoplesList = new List<People>();
-        public People Create(People people)
+        static List<Person> personsList = new List<Person>();
+        public Person Create(Person person)
         {
-            people.Id = ++idCounter;
-            peoplesList.Add(people);
-            return people;
+            person.Id = ++idCounter;
+            personsList.Add(person);
+            return person;
         }
                 
-        public List<People> GetAll()
+        public List<Person> GetAll()
         {
-            return peoplesList;
+            return personsList;
         }
 
-        public List<People> GetByCityName(string cityName)
+        public List<Person> GetByCity(string city)
         {
-            List<People> peopleCityName = new List<People>();   
-            foreach(People pPeople in peoplesList) 
+            List<Person> personCity = new List<Person>();   
+            foreach(Person pPerson in personsList) 
             {
-                if (pPeople.CityName == cityName)
+                if (pPerson.City == city)
                 {
-                    peopleCityName.Add(pPeople);
+                    personCity.Add(pPerson);
                 }
 
             }
-            return peopleCityName;
+            return personCity;
 
         }
 
-        public People GetById(int id)
+        public Person GetById(int id)
         {
-            People people = null;
-            foreach(People people1 in peoplesList) 
+            Person person = null;
+            foreach(Person person1 in personsList) 
             {
-                if(people1.Id == id)
+                if(person1.Id == id)
                 {
-                    people = people1;
+                    person = person1;
                     break;
                 }
             }
-            return people;
+            return person;
         }
 
-        public void Update(People people)
+        public void Update(Person person)
         {
-            People originalPeople = GetById(people.Id);
-            if(originalPeople != null)
+            Person originalPerson = GetById(person.Id);
+            if(originalPerson != null)
             {
-                originalPeople.Name = people.Name;
-                originalPeople.CityName = people.CityName;
-                originalPeople.PhoneNumber = people.PhoneNumber;    
+                originalPerson.Name = person.Name;
+                originalPerson.City = person.City;
+                originalPerson.PhoneNumber = person.PhoneNumber;    
             }
         }
-        public void Delete(People people)
+        public void Delete(Person person)
         {
-            if(people != null)
+            if(person != null)
             {
-               peoplesList.Remove(people);
+               personsList.Remove(person);
             }
         }
     }

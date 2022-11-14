@@ -1,6 +1,6 @@
 ﻿//JavaScript Code
 
-function getLastPeople(actionUrl) {
+function getLastPerson(actionUrl) {
     $.get(actionUrl, function (response); {
         console.log("Response", response);
         document.getElementById("result").innerHTML = response;
@@ -8,13 +8,13 @@ function getLastPeople(actionUrl) {
     });
 }
 
-function getPeopleList(actionUrl) {
+function getPersonList(actionUrl) {
     $.get(actionUrl, function (response) {
         console.log("Response:", response);
         document.getElementById("result").innerHTML = response;
     });
 }
-function getLastPeoplelJSON(actionUrl) {
+function getLastPersonJSON(actionUrl) {
     $.get(actionUrl, function (response) {
         console.log("JSON Response:", response);
         document.getElementById("result").innerHTML = response;

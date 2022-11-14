@@ -23,50 +23,72 @@ namespace PersonMVC.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View(new CreatePeopleViewModel());
+            return View(new CreatePersonViewModel());
         }
         [HttpPost]
         [AutoValidateAntiforgeryToken]
 
-        public IActionResult Create(CreatePeopleViewModel createPeople)
+        public IActionResult Create(CreatePersonViewModel createPerson)
         {
             if(ModelState.IsValid)
             {
                 try
                 {
-                    _peopleService.Create(createPeople);
+                    _peopleService.Create(createPerson);
 
                 }
                 catch (ArgumentException exception)
                 {
-                    ModelState.AddModelError("People & CityName", exception.Message);
-                    return View(createPeople);
+                    ModelState.AddModelError("Person & City", exception.Message);
+                    return View(createPerson);
 
                 }
-                return RedirectToAction(nameof(People));
+                return RedirectToAction(nameof(Person));
 
             }
-            return View(createPeople);
+            return View(createPerson);
         }
 
         public IActionResult Details(int id)
         {
-            People people = _peopleService.FindById(id);
-            if(people == null)
+            Person person = _peopleService.FindById(id);
+            if(person == null)
             {
-                return RedirectToAction(nameof(People));
+                return RedirectToAction(nameof(Person));
 
             }
-            return View(people);
+            return View(person);
         }
-        public IActionResult LastPeopleArrivel()
+        public IActionResult LastPersonArrivel()
         {
-            People people = _peopleService.LastAdded();
-            if(people != null)
+            Person person = _peopleService.LastAdded();
+            if(person != null)
             {
-                return PartialView("_PeopleRow",people);
+                return PartialView("_PeopleRow",person);
             }
             return NotFound();
+        }
+
+        public IActionResult LastPersonArrivelJSON()
+        {
+
+            Person person = _peopleService.LastAdded();
+            if(person !=null)
+            {
+                return Json(person);
+            }
+            return NotFound();
+        }
+
+        public IActionResult AjaxPersonList()
+        {
+            List<Person> person = _peopleService.GetAll();
+            if(person != null)
+            {
+                return PartialView("_PeopleList", person);
+            }
+            return BadRequest();
+
         }
         
     }
