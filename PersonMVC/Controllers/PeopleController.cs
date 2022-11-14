@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using PersonMVC.Models;
 using PersonMVC.Models.Repos;
 using PersonMVC.Models.Services;
 using PersonMVC.Models.ViewModels;
-using System;
 
 
 namespace PersonMVC.Controllers
@@ -39,11 +39,11 @@ namespace PersonMVC.Controllers
                 }
                 catch (ArgumentException exception)
                 {
-                    ModelState.AddModelError("Person & City", exception.Message);
+                    ModelState.AddModelError("Person", exception.Message);
                     return View(createPerson);
 
                 }
-                return RedirectToAction(nameof(Person));
+                return RedirectToAction(nameof(People));
 
             }
             return View(createPerson);
@@ -54,7 +54,7 @@ namespace PersonMVC.Controllers
             Person person = _peopleService.FindById(id);
             if(person == null)
             {
-                return RedirectToAction(nameof(Person));
+                return RedirectToAction(nameof(People));
 
             }
             return View(person);

@@ -11,7 +11,7 @@ namespace PersonMVC.Models.ViewModels
     
         public string? City { get; set; }
         [StringLength(80,MinimumLength =1)]
-        [Required]
+       
         public string? PhoneNumber { get; set; }
         [Required]
 

@@ -3,42 +3,46 @@
     public class InMemoryRepo : IPeopleRepo
     {
         static int idCounter = 0;
-        static List<Person> personsList = new List<Person>();
+        static List<Person> persons = new List<Person>();
         public Person Create(Person person)
         {
             person.Id = ++idCounter;
-            personsList.Add(person);
+            persons.Add(person);
             return person;
         }
                 
         public List<Person> GetAll()
         {
-            return personsList;
+            return persons;
         }
 
         public List<Person> GetByCity(string city)
         {
-            List<Person> personCity = new List<Person>();   
-            foreach(Person pPerson in personsList) 
+            List<Person> personList = new List<Person>();   
+            if(!string.IsNullOrEmpty(city))
             {
-                if (pPerson.City == city)
+                persons = new List<Person>();
+            }
+            foreach(Person pPerson in persons) 
+            {
+                if (pPerson.Name == city)
                 {
-                    personCity.Add(pPerson);
+                    personList.Add(pPerson);
                 }
 
             }
-            return personCity;
+            return personList;
 
         }
 
         public Person GetById(int id)
         {
-            Person person = null;
-            foreach(Person person1 in personsList) 
+            Person? person = null;
+            foreach(Person pPerson in persons) 
             {
-                if(person1.Id == id)
+                if(pPerson.Id == id)
                 {
-                    person = person1;
+                    person = pPerson;
                     break;
                 }
             }
@@ -54,12 +58,14 @@
                 originalPerson.City = person.City;
                 originalPerson.PhoneNumber = person.PhoneNumber;    
             }
+           
         }
         public void Delete(Person person)
         {
-            if(person != null)
+            if (person != null)
             {
-               personsList.Remove(person);
+                persons.Remove(person);
+
             }
         }
     }

@@ -3,31 +3,10 @@
     ViewData["Title"] = "Person";
 }
 
-<h1>People</h1>
+<h1>Person</h1>
 <a asp-action="Create">Add a person to the list</a>
 
-<table>
-    <thead>
-        <hr />
-        <td> Id </td>
-        <td>Name</td>
-        <td>Phone number</td>
-        <td>City name</td>
 
-    </thead>
-    <tbody>
-        @foreach(Person person in Model)
-        {
-            <tr>
-                <td>@person.Name</td>
-                <td>@person.PhoneNumber</td>
-                <td>@person.City</td>
-               <td>@Html.ActionLink("Details","Details","People",new {id= person.Id})</td>
-            </tr>  
-        }
-
-    </tbody>
-</table>
 
 <div class="row">
     <div class="col-3">Name</div>
@@ -35,6 +14,8 @@
     <div class="col-3">City</div>
     </div>
     @foreach(Person person in Model)
+{
+    if(person != null)
 {
        <div class="col-3">@person.Name</div>
           <div class="col-3">@person.PhoneNumber</div>
@@ -44,6 +25,7 @@
      
     <partial name="_PeopleRow" model="person"></partial>
 
+}
 }
 
 
