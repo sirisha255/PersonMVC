@@ -40,7 +40,7 @@ namespace PersonMVC.Models.Services
         {
             return _peopleRepo.GetAll();
         }
-        //public List<People> FindByCityName(string cityname) => _peopleRepo.GetByCityName(cityname);
+       
         public void Edit(int id, CreatePersonViewModel editPerson)
         {
             throw new NotImplementedException();
@@ -49,7 +49,7 @@ namespace PersonMVC.Models.Services
         {
             throw new NotImplementedException();
         }
-        public Person? LastAdded()
+        public Person LastAdded()
         {
             List<Person> person = _peopleRepo.GetAll();
             if(person.Count <1)
